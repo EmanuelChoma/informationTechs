@@ -1,0 +1,326 @@
+/* Basic reset and box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Flexbox for main layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styles */
+.header {
+    background-color: rgb(37, 33, 82);
+    color: #fff;
+    padding: 2em;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em 1em;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Search bar styles */
+.search-bar {
+    width: 250px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: white;
+    padding-left: 10px;
+}
+
+.search-bar input::placeholder {
+    color: white;
+}
+
+.search-bar button {
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-bar button i {
+    font-size: 22px;
+    color: white;
+}
+
+.main-content {
+    position: relative;
+    flex: 1; /* Allows the main content to expand and take up available space */
+}
+
+.backround {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+.backround::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('backroundpic.jpg') no-repeat center center/cover;
+    filter: blur(2px); /* Adjust blur level as needed */
+    transform: scale(1.1); /* Optional: to prevent edges from being visible */
+}
+
+/* Optional: dark overlay to improve text readability */
+.backround::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the darkness level */
+}
+.container {
+    content: '';
+    position: relative;
+    top: 43.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 550px;
+    background: url('img/backroundpic.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-top: 35px;
+}
+.container  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    background: transparent;
+    padding: 80px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.container .logo {
+    font-size: 30px;
+}
+.container h2 {
+    font-size: 40px;
+    line-height: 1;
+}
+.container h2 span {
+    font-size: 25px;
+}
+.text-sci p {
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.social-icons{
+    align-items: center;
+}
+.social-icons a i {
+    font-size: 22px;
+    color: white;
+    margin-right: 10px;
+    transition: 5s ease;
+}
+.social-icons a:hover i{
+    transform: scale(1.2);
+}
+.container .loginreg-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 58%);
+    height: 100%;
+    overflow: hidden;
+}
+.loginreg-box .form-box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+}
+.loginreg-box .form-box.login{
+    transform: translateX(0);
+   transition: transform .6s ease;
+   transition-delay: 0s;
+}
+.loginreg-box.active .form-box.login{
+    transform: translateX(430px);
+    transition-delay: 0s;
+}
+
+.loginreg-box .form-box.register {
+    transform: translateX(430px);
+    transition: transform .6s ease;
+    transition-delay: 0s;
+}
+.loginreg-box.active .form-box.register {
+    transform: translateX(0);
+    transition-delay: .7s;
+}
+.form-box h2 {
+    font-size: 32px;
+    text-align: center;
+
+}
+.form-box .input-box {
+    position: relative;
+    width: 340 px;
+    height: 50px;
+    border-bottom: 2px solid white;
+    margin: 30px 0;
+}
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    padding-right: 28px;
+}
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 500;
+    pointer-events: none;
+    transition: .5s ease;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+.input-box .icon {
+    position: absolute;
+    top: 13px;
+    right: 0;
+    font-size: 19px;
+}
+.form-box .remember-forgot {
+    font-size: 14.5px;
+    font-weight: 400;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: white;
+    margin-right: 3px;
+}
+.remember-forgot a {
+    color: white;
+    text-decoration: none;
+}
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+.btn   {
+    width: 100%;
+    height: 45px;
+    background: blueviolet;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 0 10 px rgb(0, 0, .5);
+
+}
+.form-box .login-register {
+    font-size: 14.5px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 25px;
+
+}
+
+.login-register p a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+.footer-bottom {
+    background-color: rgb(37, 33, 82);
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+.footer-bottom .copyright a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom .copyright a:hover {
+    text-decoration: underline;
+}
